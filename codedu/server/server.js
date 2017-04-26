@@ -10,7 +10,13 @@ app.listen(port, function() {
   console.log(`Server Start Port ${port}`)
 })
 
+app.get('/api/study', function(req, res) {
+  const responseData = "Response Ok"
+  res.json(responseData)
+})
+
 app.get('*', function(req, res, next) {
+  console.log(req.path)
   if(req.path.split('/')[1] === 'static') {
     console.log("static")
     return next();
